@@ -29,7 +29,7 @@ for (i = 0; i < l; i++) {
   a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
   x[i].appendChild(a);
   /*for each element, create a new DIV that will contain the option list:*/
-  b = document.createElement("DIV");
+  b = document.createElement("DIV"); 
   b.setAttribute("class", "select-items select-hide");
   for (j = 1; j < ll; j++) {
     /*for each option in the original select element,
@@ -155,10 +155,10 @@ function requestSignup() {
         let div = document.getElementById('Error')
         div.innerHTML = 'USUARIO YA PENDIENTE'
       } else if(data.code == "registeredUser"){
-        return window.location.href = '../login.html?code=' + data.code
+        return window.location.href = 'login.html?code=' + data.code
       } 
     } else if(data.status == "OK"){
-      return window.location.href = '../index.html?code=registrado'
+      return window.location.href = 'index.html?code=registrado'
     }  // Borro formulario y ya esta en la lista pendiente 
   })
   .catch(function (error) {
@@ -192,14 +192,14 @@ function requestLogin() {
       document.cookie = 'login=' + data.coockies 
       console.log(document.cookie)
       location.href = ('index.html')
-      // Completar 
+
     }  // Borro formulario y ya esta en la lista pendiente 
   })
   .catch(function (error) {
     console.log('Request failed', error);
   });
 }
-// COMPROBAR SI ESTA EL REMEMBER ME ACTIVADO. 
+
 let sescoockie = sessionStorage.getItem( 'sescoockie' )
 console.log(sessionStorage)
 if(sescoockie) {
