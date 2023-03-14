@@ -5,14 +5,16 @@ const container = document.querySelector(".container"),
       login = document.querySelector(".login-link");
 
 function onSignIn(googleUser) {
-  var id_token = googleUser.getAuthResponse().id_token;
-var xhr = new XMLHttpRequest();
-xhr.open('POST', 'http://localhost:8080/googlelog');
-xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-xhr.onload = function() {
-  console.log('Signed in as: ' + xhr.responseText);
-};
-xhr.send('idtoken=' + id_token);
+  var id_token = googleUser.credential;
+  fetch("https://GrowlingMiniatureThings.lilipops.repl.co/googlelog", {
+    method: 'post',
+    headers: {
+      "Content-type": "application/json; charset=UTF-8"
+    },
+    body: JSON.stringify({
+      idtoken: id_token
+    })
+  })
 }
 
 
