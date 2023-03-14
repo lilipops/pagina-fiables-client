@@ -15,6 +15,19 @@ function onSignIn(googleUser) {
       idtoken: id_token
     })
   })
+  .then(function (resp){
+    return resp.json()
+  })
+  .then(function (data) {
+   if(data.status == "OK"){
+      console.log(data)
+      document.cookie = 'remember=true'
+      sessionStorage.setItem( 'sescoockie', data.sescoock)
+      document.cookie = 'login=' + data.coockies 
+      console.log(document.cookie)
+      location.href = ('index.html')
+    }  // Borro formulario y ya esta en la lista pendiente 
+  })
 }
 
 
@@ -169,7 +182,6 @@ function requestSignup() {
 }
 
 function requestLogin() {
-
   fetch("http://localhost:8080/login", {
     method: 'post',
     headers: {
