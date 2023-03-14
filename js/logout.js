@@ -1,7 +1,7 @@
 let sescoockie = sessionStorage.getItem( 'sescoockie' )
 if(sescoockie) {
   console.log('hola');
-  fetch("http://localhost:8080/sescoockie", {
+  fetch("https://GrowlingMiniatureThings.lilipops.repl.co", {
     method: 'post',
     headers: {
       "Content-type": "application/json; charset=UTF-8"
